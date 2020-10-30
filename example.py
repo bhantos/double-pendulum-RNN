@@ -69,8 +69,7 @@ y1 = -L1*cos(y[:, 0])
 x2 = L2*sin(y[:, 2]) + x1
 y2 = -L2*cos(y[:, 2]) + y1
 
-#print("length of x2 is : : ",len(x2))
-#print("length of y2 is : : ",len(y2))
+
 
 fig = plt.figure()
 ax = fig.add_subplot(111, autoscale_on=False, xlim=(-2, 2), ylim=(-2, 2))
@@ -79,6 +78,8 @@ ax.grid()
 line, = ax.plot([], [], 'o-', lw=1)
 time_template = 'time = %.1fs'
 time_text = ax.text(0.05, 0.9, '', transform=ax.transAxes)
+
+
 
 
 def init():
