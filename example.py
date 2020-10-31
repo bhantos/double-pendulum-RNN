@@ -42,6 +42,11 @@ def derivs(state, t):
 
     return dydx
 
+def velo_sq(x,y):
+    v = lambda q: np.array([q[i+1]-q[i] for i in range(len(q)-1)]) /dt
+    v_sq = v(x)**2 + v(y)**2
+    return v_sq
+
 # create a time array from 0..100 sampled at 0.05 second steps
 dt = 0.01
 t = np.arange(0.0, 100, dt)
@@ -69,6 +74,17 @@ y1 = -L1*cos(y[:, 0])
 x2 = L2*sin(y[:, 2]) + x1
 y2 = -L2*cos(y[:, 2]) + y1
 
+v1_sq = np.concatenate([[0],velo_sq(x1,y1)])
+v2_sq = np.concatenate([[0],velo_sq(x1,y1)])
+
+def energy(v1_sq,v2_sq,y1,y2):
+    '''kin = 0.5 * (v1_sq + v2_sq)
+    pot = G*(y1 + y2)'''
+    kin = 0.5*y[:,1]**2 + 0.5 * (y[:,1]**2+ y[:,3]**2 + 2* y[:,1] * y[:,3]*cos(y[:,0]-y[:,2]))
+    pot = -cos(y[:,0]) * G - G* cos(y[:,2])
+    return kin+pot
+
+energy_arr = energy(v1_sq, v2_sq, y1, y2)
 
 
 fig = plt.figure()
@@ -78,15 +94,13 @@ ax.grid()
 line, = ax.plot([], [], 'o-', lw=1)
 time_template = 'time = %.1fs'
 time_text = ax.text(0.05, 0.9, '', transform=ax.transAxes)
-
-
-
+energy_text = ax.text(0.05, 0.83, '', transform=ax.transAxes)
 
 def init():
     line.set_data([], [])
     time_text.set_text('')
-    return line, time_text
-
+    energy_text.set_text('')
+    return line, time_text, energy_text
 
 def animate(i):
     thisx = [0, x1[i], x2[i]]
@@ -94,7 +108,8 @@ def animate(i):
 
     line.set_data(thisx, thisy)
     time_text.set_text(time_template % (i*dt))
-    return line, time_text
+    energy_text.set_text("energy: %.2fs" % round(energy_arr[i],2))
+    return line, time_text, energy_text
 
 ani = animation.FuncAnimation(fig, animate, np.arange(1, len(y)),
                               interval=15, blit=True, init_func=init)
