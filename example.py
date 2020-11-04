@@ -78,10 +78,10 @@ v1_sq = np.concatenate([[0],velo_sq(x1,y1)])
 v2_sq = np.concatenate([[0],velo_sq(x1,y1)])
 
 def energy(v1_sq,v2_sq,y1,y2):
-    '''kin = 0.5 * (v1_sq + v2_sq)
-    pot = G*(y1 + y2)'''
-    kin = 0.5*y[:,1]**2 + 0.5 * (y[:,1]**2+ y[:,3]**2 + 2* y[:,1] * y[:,3]*cos(y[:,0]-y[:,2]))
-    pot = -cos(y[:,0]) * G - G* cos(y[:,2])
+    kin = 0.5 * (v1_sq + v2_sq)
+    pot = G*(y1 + y2)
+    '''kin = 0.5*y[:,1]**2 + 0.5 * (y[:,1]**2+ y[:,3]**2 + 2* y[:,1] * y[:,3]*cos(y[:,0]-y[:,2]))
+    pot = -cos(y[:,0]) * G - G* cos(y[:,2])'''
     return kin+pot
 
 energy_arr = energy(v1_sq, v2_sq, y1, y2)
@@ -108,13 +108,13 @@ def animate(i):
 
     line.set_data(thisx, thisy)
     time_text.set_text(time_template % (i*dt))
-    energy_text.set_text("energy: %.2fs" % round(energy_arr[i],2))
+    energy_text.set_text("energy: %.2f J" % round(energy_arr[i],2))
     return line, time_text, energy_text
 
 ani = animation.FuncAnimation(fig, animate, np.arange(1, len(y)),
                               interval=15, blit=True, init_func=init)
 
-
+plt.plot(np.arange(len(energy_arr)),energy_arr)
 #ani.save('double_pendulum.mp4', fps=15)
 
-plt.show()
+#plt.show()
