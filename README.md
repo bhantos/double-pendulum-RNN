@@ -1,11 +1,12 @@
 # Solving differential equations: double pendulum and deep learning
 
+## Introduction
 The aim of my project is to investigate how neural networks perform at solving ordinary differential 
 equations. Currently, machine learning solutions are trending in the IT industry. From image and 
 sound  processing methods through recommender  systems to  time  series analysis it is getting 
 widespread to use neural networks in fields where large amounts of data is available.
 
-
+## Motivation
 The  motivation  behind  this  project  stems  from  the  strong  intertwining  between  differential 
 equation solving and the nature of neural networks. It is very important to mention, that there is 
 a lot of related work in this area. Notably, recently solvers were used to suggest some new neural 
