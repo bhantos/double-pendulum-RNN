@@ -26,10 +26,13 @@ might be capable of solving the equation of motion for the chaotic double pendul
 
 [1]  Haber, Eldad, and Lars Ruthotto. "Stable architectures for deep neural networks." Inverse 
 Problems 34.1 (2017): 014004. 
+
 [2]  Chen,  Ricky  TQ,  et  al.  "Neural  ordinary  differential  equations."  Advances  in  neural 
 information processing systems. 2018. 
+
 [3]  Bo  Chang,  Lili  Meng,  Eldad  Haber,  Lars  Ruthotto,  David  Begert,  and  Elliot  Holtham. 
 Reversible  architectures  for  arbitrarily  deep  residual  neural  networks.  arXiv  preprint 
 arXiv:1709.03698, 2017.
+
 [4]  Breen at al.: Newton vs the machine: solving the chaotic three-body problem using deep neural 
 networks 
