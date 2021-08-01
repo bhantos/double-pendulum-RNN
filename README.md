@@ -22,6 +22,8 @@ On the other hand, recurrent neural networks, as a general tool of time series a
 a good use, to tackle the notion of events being sequential. I propose a model in this project, which 
 might be capable of solving the equation of motion for the chaotic double pendulum.
 
+<b>See the report for my results. You may have to download it, as Github doesn't really like pdf format.</b>
+
 [1]  Haber, Eldad, and Lars Ruthotto. "Stable architectures for deep neural networks." Inverse 
 Problems 34.1 (2017): 014004. 
 [2]  Chen,  Ricky  TQ,  et  al.  "Neural  ordinary  differential  equations."  Advances  in  neural 
